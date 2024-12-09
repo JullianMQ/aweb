@@ -1,0 +1,24 @@
+<!-- <app-data-binding-demo></app-data-binding-demo> -->
+<!-- <app-directives-demo></app-directives-demo> -->
+
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a href="#" class="navbar-brand">Admin Panel</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a routerLink="/user" class="nav-link" routerLinkActive="active">User</a>
+                </li>
+                <li class="nav-item active">
+                    <a routerLink="/post" class="nav-link" routerLinkActive="active"> Post </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<router-outlet></router-outlet>

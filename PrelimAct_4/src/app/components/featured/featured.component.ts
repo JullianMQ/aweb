@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrl: './featured.component.css'
 })
 export class FeaturedComponent {
-
 }

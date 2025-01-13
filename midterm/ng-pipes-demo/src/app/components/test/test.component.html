@@ -1,0 +1,38 @@
+<div>
+    Today's date :- {{ presentDate | date }}<br />
+    Today's date :- {{ presentDate | date:'shortDate' }}<br />
+    Today's date :- {{ presentDate | date:'fullDate' }}<br />
+    Today's date :- {{ presentDate | date:'M/dd/yyyy' }}<br />
+    Today's date :- {{ presentDate | date:'h:mm' }}<br />
+
+    Today's date :- {{ presentDate | date:'fullDate' | uppercase}}<br />
+    Today's date :- {{ presentDate | date:'medium' | lowercase}}<br />
+
+    Today's date :- {{ presentDate }}<br />
+
+    Seconds changing in time: {{ time$ | async | date:'medium' }}
+
+    <h3> Currency Pipe </h3>
+    <p>{{ price | currency:'':true }}</p>
+    <p>{{ price | currency:'INR' }}</p>
+    <p>{{ price | currency:'USD' }}</p>
+
+    <h3>Start index:- {{Fruits | slice:2}}</h3>
+    <h3>Start index:- {{Fruits | slice:1:4}}</h3>
+
+    <p>Formatting:- {{ decimalNum1 | number:'3.1' }}</p>
+    <p>Formatting:- {{ decimalNum1 | number:'3.1-1' }}</p>
+    <p>Formatting:- {{ decimalNum1 | number:'1.1-4' }}</p>
+
+    <h2>Display only first and last</h2>
+    <p>First:- {{testArr | slice:0:1}} Last: {{testArr | slice:0-1}}</p>
+
+    <h3>Key value pipe</h3>
+    <div *ngFor="let item of testObj | keyvalue">
+        {{ item.key}}:- {{item.value }}
+    </div>
+
+    <h3>JSON pipe</h3>
+    <p>Object: {{ testObj }} </p>
+    <p>Object with JsonPipe: {{ testObj | json }} </p>
+</div>

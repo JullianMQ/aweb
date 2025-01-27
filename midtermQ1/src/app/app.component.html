@@ -1,0 +1,23 @@
+<p>{{ currentDate | date:'M/d/yy' }}</p>
+<p>{{ currentDate | date:'' }}</p>
+<p>{{ currentDate | date:'EEEE, MMMM dd, yyyy' }}</p>
+<p>{{ currentDate | date:'h:mm a' }}</p>
+<p>{{ currentDate | date:'d' }}</p>
+<p>{{ currentDate | date:'w' }}</p>
+
+<p>{{ price | currency:'USD'}}</p>
+<p>{{ price | currency:'USD ':'code'}}</p>
+<p>{{ price | currency:'INR'}}</p>
+<p>{{ price | currency:'GBP'}}</p>
+
+<p>{{ arrayStream$ | async }}</p>
+<p>{{ transformedData$ | async }}</p>
+
+<p>{{ nestedArrays | json }}</p>
+<p>{{ complexData | json }}</p>
+<p>{{ mixedTypes | json }}</p>
+
+<p>{{ numbers | slice:3:6 }}</p>
+<p>{{ numbers | slice:-3 }}</p>
+<p>{{ longString | slice:-2 }}</p>
+<p>{{ longString | slice:0:5 }}</p>

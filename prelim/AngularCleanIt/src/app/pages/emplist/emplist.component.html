@@ -1,0 +1,92 @@
+<!-- Dropdown for selecting employment status -->
+<div class="h-[85vh]">
+  <div class="px-2 mx-8 my-6 mb-16">
+    <label for="statusFilter">Employment Status:</label>
+    <select id="statusFilter" [(ngModel)]="selectedStatus" class="p-1 rounded ml-2">
+      <option *ngFor="let status of empStatus" [value]="status">{{ status }}</option>
+    </select>
+
+
+
+    <!-- Display the filtered list of employees -->
+    <div *ngIf="filteredEmployees.length > 0; else noEmployeesFound"
+      class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
+      <table class="w-full text-left table-auto min-w-max">
+        <thead>
+          <tr>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+              <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                Employee Number
+              </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+              <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                Full Name
+              </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+              <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                Gender
+              </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+              <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                Email
+              </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+              <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                Employment Status
+              </p>
+            </th>
+            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+              <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                Salary
+              </p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees" class="even:bg-blue-gray-50/50">
+            <td class="p-4">
+              <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {{ employee.empNumber }}
+              </p>
+            </td>
+            <td class="p-4">
+              <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {{ employee.fullName }}
+              </p>
+            </td>
+            <td class="p-4">
+              <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {{ employee.gender }}
+              </p>
+            </td>
+            <td class="p-4">
+              <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {{ employee.email }}
+              </p>
+            </td>
+            <td class="p-4">
+              <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                {{ employee.employmentStatus }}
+              </p>
+            </td>
+            <td class="p-4">
+              <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                ₱{{ employee.salary }}
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- If no employees match the filter, show this message -->
+    <ng-template #noEmployeesFound>
+      <p>No employees found for this category.</p>
+    </ng-template>
+  </div>
+</div>

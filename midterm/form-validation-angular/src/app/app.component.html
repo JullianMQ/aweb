@@ -1,0 +1,23 @@
+<div class="form-container">
+  <h1>Reactive Driven Form with Validation</h1>
+
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <input type="text" class="input-box" name="userName" placeholder="Enter userName" formControlName="userName">
+    <input type="text" class="input-box" name="userEmail" placeholder="Enter userEmail" formControlName="userEmail">
+    <div *ngIf="formdata.controls['userEmail'].invalid && formdata.controls['userEmail'].touched" class="error">
+      Email is required and must be a valid email address
+    </div>
+
+    <input type="text" class="input-box" name="userPass" placeholder="Enter userPass" formControlName="userPass">
+    <div *ngIf="formdata.controls['userPass'].invalid && formdata.controls['userPass'].touched" class="error">
+      Password is required and must be at least 8 characters long.
+    </div>
+
+    <input type="text" class="input-box" name="userAge" placeholder="Enter userAge" formControlName="userAge">
+    <input type="submit" class="btn" value="Click here">
+  </form>
+</div>
+<p>You have entered: {{ userName }}</p>
+<p>User email: {{ userEmail }}</p>
+<p>User pass: {{ userPass }}</p>
+<p>User age: {{ userAge }}</p>

@@ -1,0 +1,34 @@
+<router-outlet>
+<div>
+  <h1>Template Driven Form</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" class="input-box" name="username" [(ngModel)]="anytext" placeholder="Input username" required>
+    <input type="text" class="input-box" name="username" [(ngModel)]="anytext" placeholder="Input user pass" required>
+    <input type="text" class="input-box" name="username" [(ngModel)]="anytext" placeholder="Input user age" required>
+    <input type="text" class="input-box" name="username" [(ngModel)]="anytext" placeholder="Input user height" required>
+    <input type="submit" value="Submit" [disabled]="!anytext">
+  </form>
+</div>
+<p *ngIf="submitted">User name: {{ anytext }}</p>
+<p *ngIf="submitted">User pass: {{ anyPass }}</p>
+<p *ngIf="submitted">User age: {{ anyAge }}</p>
+<p *ngIf="submitted">User height: {{ anyHeight }}</p>
+
+<div>
+  <h1>Reactive Driven Form</h1>
+
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <input type="text" class="input-box" name="userName" placeholder="Enter userName" formControlName="userName">
+    <input type="text" class="input-box" name="userPass" placeholder="Enter userPass" formControlName="userPass">
+    <input type="text" class="input-box" name="userAge" placeholder="Enter userAge" formControlName="userAge">
+    <input type="text" class="input-box" name="userHeight" placeholder="Enter userHeight" formControlName="userHeight">
+    <input type="submit" class="btn" value="Click here">
+  </form>
+</div>
+<p>You have entered: {{ userName }}</p>
+<p>User pass: {{ userPass }}</p>
+<p>User age: {{ userAge }}</p>
+<p>User height: {{ userHeight }}</p>
+
+<router-outlet />

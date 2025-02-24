@@ -1,0 +1,106 @@
+<div class="form-container">
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Enter Text" formControlName="userName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Enter Email" formControlName="email">
+            <mat-error *ngIf="formdata.controls['email'].invalid && formdata.controls['email'].touched">
+                Email is required and must be a valid email.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Enter password" formControlName="password">
+            <mat-error *ngIf="formdata.controls['password'].invalid && formdata.controls['password'].touched">
+                Password is required and must be at least 8 characters long.
+            </mat-error>
+        </mat-form-field>
+
+        <div class="radio-group">
+            <label for="radio-label">Gender</label>
+            <mat-radio-group formControlName="gender" class="gender-radio-group">
+                <mat-radio-button value="male"><span class="radio-button-value">Male</span></mat-radio-button>
+                <mat-radio-button value="female"><span class="radio-button-value">Female</span></mat-radio-button>
+                <mat-radio-button value="other"><span class="radio-button-value">Other</span></mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Enter Address" formControlName="address">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Select a Date" formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="formdata.get('birthDate')?.hasError('required')">
+                Birth Date is required.
+            </mat-error>
+        </mat-form-field>
+
+        <div appearance="slider-group">
+            <label class="slider-label">Angular Skill Level: {{ formdata.get('angularSkillLevel')?.value }}</label>
+            <mat-slider [min]="minSkillLevel" [max]="maxSkillLevel" [step]="1" [discrete]="true">
+                <input matSliderThumb formControlName="angularSkillLevel">
+            </mat-slider>
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!formdata.valid" (click)="openSnackBar(message, action)"> Click Here </button>
+    </form>
+
+    <mat-card *ngIf="submitted" appearance="outlined" style="background-color: rgb(247, 205, 249); padding-bottom: 1rem; margin-top: 1rem;">
+        <mat-list>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Username: {{ userName }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Email: {{ email }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Password: {{ password }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Gender: {{ gender }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Birth Date: {{ birthDate | date:'shortDate' }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Angular Skill Level: {{ angularSkillLevel }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-list-item>
+                    <mat-card-title>Username: {{ userName }}</mat-card-title>
+                </mat-list-item>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+        </mat-list>
+      </mat-card>
+      <br>
+      
+
+</div>

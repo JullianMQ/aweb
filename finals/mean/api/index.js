@@ -32,15 +32,15 @@ app.listen(5038, ()=>{
 //ROUTES TO ALL ACTIONS
 
 //get all dbase data
-app.get('/api/books/GetBooks',(req, res) => {
+app.get('/api/books/GetBooks', (req, res) => {
     database.collection("books").find({}).toArray((error,result)=>{
         res.send(result);
     })
 })
 
+app.use(Express.json())
 
 app.post('/api/books/AddBook', async (req, res) => {
-    console.log(req.title)
     try {
         const numOfDocs = await database.collection("books").countDocuments();
         await database.collection("books").insertOne({
